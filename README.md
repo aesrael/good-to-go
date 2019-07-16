@@ -21,7 +21,7 @@ Voila! you are good to go!😎
 Don't forget your umbrella or jacket.
 
 ## Sample Output
-![CLI output](../assets/cli.png)
+![CLI output](./assets/cli.png)
 
 
 ## Contributing
