@@ -6,6 +6,9 @@ import (
 	"good-to-go/utils"
 	"io/ioutil"
 	"net/http"
+	"time"
+
+	"github.com/fatih/color"
 )
 
 type Location struct {
@@ -56,20 +59,36 @@ type CurrentWeather struct {
 func main() {
 	location := getLocationFromIP()
 	weather := getWeatherInfo(location)
-	// fmt.Println(weather.Daily, "summary")
-	// printWeatherInfo(weather)
-	fmt.Printf("%+v\n", weather)
+	printWeatherInfo(weather)
 }
 
-// func printWeatherInfo(weather) CurrentWeather {
+func printWeatherInfo(weather CurrentWeather) {
+	color := color.New(color.FgRed).Add(color.Bold)
 
-// }
+	color.Printf(weather.Currently.Summary + "\n")
+	fmt.Println("\n")
+
+	color.Printf("Location:           %s\n", weather.Timezone)
+	color.Printf("Date:               %s\n", currentDate())
+	color.Printf("Temperature:        %f\n", weather.Currently.Temperature)
+	color.Printf("Pressure:           %f\n", weather.Currently.Pressure)
+	color.Printf("Visibility:         %f\n", weather.Currently.Visibility)
+	color.Printf("WindSpeed:          %f\n", weather.Currently.WindSpeed)
+	color.Printf("Cloud Cover:        %f\n", weather.Currently.CloudCover)
+
+	color.Printf("\nSummary:            \n %s\n %s\n\n", weather.Hourly.Summary, weather.Daily.Summary)
+}
+func currentDate() string {
+	return time.Now().Format(time.RFC850)
+}
+
 func getWeatherInfo(location Location) CurrentWeather {
+	fmt.Println("\nfetching results...🌈")
+
 	lat := floatToStr(location.Location.Lat)
 	lng := floatToStr(location.Location.Lng)
 	//get weather info using darksky weather api
 	apiURL := "https://api.darksky.net/forecast/f55f3c1a9d0ccf6b5f88295b9a9aaf62/" + lat + "," + lng + "?exclude=flags,offset" + "&time=2019-02"
-	fmt.Println(apiURL)
 	resp, err := http.Get(apiURL)
 	utils.HandleErr(err)
 	defer resp.Body.Close()
@@ -86,6 +105,7 @@ func floatToStr(num float64) string {
 
 //get user location from ipaddress using ipify
 func getLocationFromIP() Location {
+	// https://geo.ipify.org/api/v1?apiKey=[API_KEY]
 	resp, err := http.Get("https://geo.ipify.org/api/v1?apiKey=at_yBQonkqZ1uamplShTvYIbodjpCpJ9")
 	utils.HandleErr(err)
 	defer resp.Body.Close()
