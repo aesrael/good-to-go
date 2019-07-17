@@ -19,10 +19,10 @@ func printWeatherInfo(weather CurrentWeather) {
 
 	color.Printf("Location:           %s\n", weather.Timezone)
 	color.Printf("Date:               %s\n", utils.CurrentDate())
-	color.Printf("Temperature:        %f\n", weather.Currently.Temperature)
-	color.Printf("Pressure:           %f\n", weather.Currently.Pressure)
-	color.Printf("Visibility:         %f\n", weather.Currently.Visibility)
-	color.Printf("WindSpeed:          %f\n", weather.Currently.WindSpeed)
+	color.Printf("Temperature:        %f °F\n", weather.Currently.Temperature)
+	color.Printf("Pressure:           %f hPa \n", weather.Currently.Pressure)
+	color.Printf("Visibility:         %f km\n", weather.Currently.Visibility)
+	color.Printf("WindSpeed:          %f m/s\n", weather.Currently.WindSpeed)
 	color.Printf("Cloud Cover:        %f\n", weather.Currently.CloudCover)
 
 	color.Printf("\nSummary:            \n %s\n %s\n\n", weather.Hourly.Summary, weather.Daily.Summary)
