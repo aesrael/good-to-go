@@ -17,7 +17,6 @@ clone this directory
 or 
 
 ```bash
-> go run main.go
 > go run main.go weather.go location.go
 ```
 

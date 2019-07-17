@@ -48,6 +48,7 @@ func GetWeatherInfo(location Location) CurrentWeather {
 	lng := utils.FloatToStr(location.Location.Lng)
 	//get weather info using darksky weather api
 	apiURL := "https://api.darksky.net/forecast/f55f3c1a9d0ccf6b5f88295b9a9aaf62/" + lat + "," + lng + "?exclude=flags,offset" + "&time=2019-02"
+	// fmt.Println(apiURL)
 	resp, err := http.Get(apiURL)
 	utils.HandleErr(err)
 	defer resp.Body.Close()
