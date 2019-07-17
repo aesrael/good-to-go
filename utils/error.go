@@ -2,7 +2,7 @@ package utils
 
 import "log"
 
-//HandleErr //handlerr
+//HandleErr //generic error handler
 func HandleErr(err error) {
 	if err != nil {
 		log.Fatal(err)
