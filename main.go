@@ -13,7 +13,7 @@ func main() {
 }
 
 func printWeatherInfo(weather CurrentWeather) {
-	color := color.New(color.FgRed).Add(color.Bold)
+	color := color.New(color.FgGreen).Add(color.Bold)
 
 	color.Printf(weather.Currently.Summary + "\n")
 
