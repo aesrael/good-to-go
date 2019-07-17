@@ -10,15 +10,18 @@ download and install [golang](https://golang.org)
 clone this directory
 
 ```bash
-go install
+> go install
+> cd $GOPATH bin
+> good-to-go
 ```
 or 
-```
-go run main.go
+
+```bash
+> go run main.go
+> go run main.go weather.go location.go
 ```
 
-Voila! you are good to go!😎
-Don't forget your umbrella or jacket.
+Voila! you are good to go!😎 Don't forget your umbrella or jacket.
 
 ## Sample Output
 ![CLI output](./assets/cli.png)
@@ -26,6 +29,9 @@ Don't forget your umbrella or jacket.
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+### Tools used
+Used the [Dark Sky API](https://darksky.net/dev) and [IPify API](https://github.com/rdegges/ipify-api), these are great tools that I totally recommnd.
 
 ### TODO
 tests.
